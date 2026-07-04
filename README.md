@@ -23,7 +23,7 @@ Funcionalidades:
 Pré-requisitos:
 
 - Java 17+
-- Maven
+- Maven (Para quem não tiver, pode usar ./mvnw)
 - Docker e Docker Compose (ou Docker Desktop)
 
 Subindo o banco:
@@ -70,6 +70,8 @@ mvn test
   - `COMPLETED`: transferência concluída com sucesso.
   - `FAILED`: transferência concluída com falha.
 
-5. Para consulta das movimentações, o service busca os registros no banco e os ordena por data em ordem crescente. O histórico registra os tipos `CREDIT` e `DEBIT`.
+5. Para consulta das movimentações, o service busca os registros no banco e os ordena por data em ordem descrescente. O histórico registra os tipos `CREDIT` e `DEBIT`.
 
 6. A notificação foi mantida simples, por meio de um serviço próprio com implementação stub em log, chamado apenas após a conclusão da transferência. Isso mantém o requisito funcional sem adicionar integração externa fora do escopo do teste.
+
+7. Para testes, é utilizado H2 para banco em memória e Mockito para mockar o service de notificação.
